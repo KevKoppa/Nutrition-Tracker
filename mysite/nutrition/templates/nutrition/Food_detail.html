@@ -1,0 +1,18 @@
+{% extends "nutrition/base.html" %}
+{% block content %}
+<h2><u>{{ object.name }}</u></h2>
+    <ul>
+        <li><b>Calories:</b> {{ data.calories }}</li>
+        <li><b>Total Fat:</b> {{ data.totalNutrients.FAT.quantity|floatformat:3 }} {{ data.totalNutrients.FAT.unit }} </li>
+        <ul>
+            <li><b>Monounsaturated Fat:</b> {{ data.totalNutrients.FASAT.quantity|floatformat:3 }} {{ data.totalNutrients.FASAT.unit }} </li>
+            <li><b>Polyunsaturated Fat:</b> {{ data.totalNutrients.FAMS.quantity|floatformat:3 }} {{ data.totalNutrients.FAMS.unit }} </li>
+        </ul>
+        <li><b>Total Carbohydrates:</b> {{ data.totalNutrients.CHOCDF.quantity|floatformat:3 }} {{ data.totalNutrients.CHOCDF.unit }} </li>
+        <ul>
+            <li><b>Fiber:</b> {{ data.totalNutrients.FIBTG.quantity|floatformat:3 }} {{ data.totalNutrients.FIBTG.unit }} </li>
+            <li><b>Sugar:</b> {{ data.totalNutrients.SUGAR.quantity|floatformat:3 }} {{ data.totalNutrients.SUGAR.unit }} </li>
+        </ul>
+        <li><b>Protein:</b> {{ data.totalNutrients.PROCNT.quantity|floatformat:3 }} {{ data.totalNutrients.PROCNT.unit }} </li>
+    </ul>
+{% endblock %}

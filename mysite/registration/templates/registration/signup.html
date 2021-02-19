@@ -1,0 +1,21 @@
+{% extends 'polls/index.html' %}
+
+{% block navbar %}
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">Nutrition Tracker - Sign Up Page</a>
+        <ul class="navbar-nav mr-only">
+            <li class="nav-item"><a class="nav-link" href="{% url 'register:login' %}">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'nutrition:food-list' date %}">Home</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Sign Up</button>
+    </form>
+{% endblock %}
+
+{% block polls %}{% endblock %}

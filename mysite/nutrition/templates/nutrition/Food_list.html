@@ -1,0 +1,79 @@
+{% extends "nutrition/base.html" %}
+{% block date %} <h1>{{ date }}</h1>{% endblock %}
+{% block content %}
+    <div id="wrapper">
+        <div id="first">
+            <h2>Breakast</h2>
+            {% for food in breakfast_data %}
+                <ul class="list-group">
+                    <li class="list-group-item-action">
+                        <a href="{% url 'nutrition:food-detail' food.ingredients.0.text|slugify %}">{{ food.ingredients.0.text }} - Calories: {{ food.calories }} </a>
+                        <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'nutrition:food-update' food.ingredients.0.text|slugify %}"
+                           role="button"> Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'nutrition:food-delete' food.ingredients.0.text|slugify %}"
+                           role="button"> Delete</a>
+                    </li>
+                </ul>
+            {% empty %}
+                <p>No breakfast items added.</p>
+            {% endfor %}
+
+            <h2>Lunch</h2>
+            {% for food in lunch_data %}
+                <ul class="list-group">
+                    <li class="list-group-item-action">
+                        <a href="{% url 'nutrition:food-detail' food.ingredients.0.text|slugify %}">{{ food.ingredients.0.text }} - Calories: {{ food.calories }} </a>
+                        <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'nutrition:food-update' food.ingredients.0.text|slugify %}"
+                           role="button"> Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'nutrition:food-delete' food.ingredients.0.text|slugify %}"
+                           role="button"> Delete</a>
+                    </li>
+                </ul>
+            {% empty %}
+                <p>No lunch items added.</p>
+            {% endfor %}
+
+            <h2>Dinner</h2>
+            {% for food in dinner_data %}
+                <ul class="list-group">
+                    <li class="list-group-item-action">
+                        <a href="{% url 'nutrition:food-detail' food.ingredients.0.text|slugify %}">{{ food.ingredients.0.text }} - Calories: {{ food.calories }} </a>
+                        <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'nutrition:food-update' food.ingredients.0.text|slugify %}"
+                           role="button"> Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'nutrition:food-delete' food.ingredients.0.text|slugify %}"
+                           role="button"> Delete</a>
+                    </li>
+                </ul>
+            {% empty %}
+                <p>No dinner items added.</p>
+            {% endfor %}
+
+            <h2>Snacks</h2>
+            {% for food in snacks_data %}
+                <ul class="list-group">
+                    <li class="list-group-item-action">
+                        <a href="{% url 'nutrition:food-detail' food.ingredients.0.text|slugify %}">{{ food.ingredients.0.text }} - Calories: {{ food.calories }} </a>
+                        <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'nutrition:food-update' food.ingredients.0.text|slugify %}"
+                           role="button"> Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'nutrition:food-delete' food.ingredients.0.text|slugify %}"
+                           role="button"> Delete</a>
+                    </li>
+                </ul>
+            {% empty %}
+                <p>No snack items added.</p>
+            {% endfor %}
+            <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'nutrition:food-create' %}" role="button">Add Food</a>
+        </div>
+
+        <div class="card" style="width: 18rem;" id="second">
+          <div class="card-body">
+            <h2 class="card-title">Basic Summary</h2>
+            <p>Total Calories: {{ total_data.calories }}</p>
+            <p>Total Fat: {{ total_data.fat }}</p>
+            <p>Total Carbohydrates: {{ total_data.carbs }}</p>
+            <p>Total Protein: {{ total_data.protein }}</p>
+            <a href="{% url 'nutrition:change-date'%}" class="btn btn-primary">Change Date</a>
+          </div>
+        </div>
+    </div>
+{% endblock %}
